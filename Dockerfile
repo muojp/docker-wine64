@@ -4,7 +4,9 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libc6-dev-i386 \
     bison \
-    flex
+    flex \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 RUN curl -sS -L http://prdownloads.sourceforge.net/wine/wine-1.6.2.tar.bz2 | tar jx -C /opt
 RUN mkdir /opt/wine32-build /opt/wine64-build
 
