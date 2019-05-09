@@ -21,3 +21,4 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /usr/local /usr/local
 RUN winecfg
+ENTRYPOINT ["/usr/local/bin/wine64"]
