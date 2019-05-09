@@ -17,3 +17,4 @@ RUN apt-get update && apt-get install -y \
  && cd /opt/wine64-build \
  && make install \
  && rm -rf /opt/wine-1.6.2 /opt/wine32-build /opt/wine64-build
+
