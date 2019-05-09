@@ -13,5 +13,5 @@ RUN apt-get update && apt-get install -y \
  && cd /opt/wine64-build && ../wine-wine-1.6.2/configure --without-x --without-freetype --enable-win64 && make -j4 \
  && cd /opt/wine32-build && ../wine-wine-1.6.2/configure --without-x --without-freetype --with-wine64=../wine64-build && make -j4 && make install \
  && cd /opt/wine64-build && make install \
- && rm -rf /opt/wine-wine-1.6.2 /opt/wine32-build /opt/wine64-build \
- && winecfg
+ && rm -rf /opt/wine-wine-1.6.2 /opt/wine32-build /opt/wine64-build
+RUN winecfg
