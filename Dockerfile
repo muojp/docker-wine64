@@ -13,9 +13,11 @@ RUN cd /opt/wine32-build && ../wine-wine-1.6.2/configure --without-x --without-f
 RUN cd /opt/wine64-build && make install
 
 FROM ubuntu:18.04
+RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y \
     libpng-dev \
+    libc6:i386 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /usr/local /usr/local
-# RUN winecfg
+RUN winecfg
