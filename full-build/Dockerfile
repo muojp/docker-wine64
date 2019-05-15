@@ -12,9 +12,6 @@ RUN cd /opt/wine64-build && ../wine-wine-1.6.2/configure --without-x --without-f
 RUN cd /opt/wine32-build && ../wine-wine-1.6.2/configure --without-x --without-freetype --with-wine64=../wine64-build && make -j4 && make install
 RUN cd /opt/wine64-build && make install
 
-# Trim GUI-related libraries to reduce final image size because this container doesn't have X integration.
-RUN rm /usr/local/lib*/wine/mshtml.dll.so /usr/local/lib*/wine/wined3d.dll.so /usr/local/lib*/wine/opengl32.dll.so /usr/local/lib*/wine/msi.dll.so /usr/local/lib*/wine/quartz.dll.so /usr/local/lib*/wine/actxprxy.dll.so /usr/local/lib*/wine/jscript.dll.so /usr/local/lib*/wine/d3d* /usr/local/lib*/wine/ddraw* /usr/local/lib*/wine/dsound*
-
 FROM ubuntu:18.04
 RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y \
